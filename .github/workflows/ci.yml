@@ -1,0 +1,21 @@
+name: Continuous Integration
+
+on: [push, pull_request]
+
+jobs:
+  fish:
+    name: fish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+	  - name: Install Fish
+        uses: fish-actions/install-fish@v1
+
+	  - name: Syntax Check
+	    uses: fish-actions/syntax-check@v1
+
+	  - name: Format Check
+        uses: fish-actions/format-check@v1
