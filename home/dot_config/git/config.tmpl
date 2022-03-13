@@ -1,0 +1,63 @@
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+	signingkey = {{ .gpg_keyid }}
+[commit]
+    verbose = true
+	gpgsign = true
+[alias]
+	a = add
+	ap = add -p
+	amc = am --continue
+	b = branch
+	bm = branch --merged
+	bnm = branch --no-merged
+	c = clone
+	ca = commit --amend
+	cane = commit --amend --no-edit
+	cf = commit --fixup
+	cm = commit --message
+	co = checkout
+	cob = checkout -b
+	com = checkout main
+	cp = cherry-pick
+	d = diff
+	dom = diff origin/main
+	fo = fetch origin
+	g = grep --line-number
+	mff = merge --ff-only
+	l = log --graph --oneline --decorate --abbrev-commit
+	p = push
+	pf = push --force
+	r = restore
+	ra = rebase --abort
+	rc = rebase --continue
+	rh = reset --hard
+	ri = rebase --interactive
+	ro = rebase --onto
+	whoami = !git config --get user.name && git config --get user.email
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    log = auto
+    grep = auto
+    interactive = auto
+    pager = true
+[core]
+    excludesfile = ~/.config/git/ignore
+    pager = less
+[init]
+    defaultBranch = "main"
+[log]
+    decorate = full
+[pull]
+    ff = only
+    rebase = true
+[rebase]
+    autosquash = true
+    autostash = true
+[github]
+    user = {{ .github_user }}
+[url "git@github.com:kucera-lukas/"]
+	insteadOf = https://github.com/kucera-lukas/
