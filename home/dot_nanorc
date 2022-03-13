@@ -1,0 +1,8 @@
+set tabsize 4
+set mouse
+set softwrap
+set autoindent
+set smarthome
+set positionlog
+set showcursor
+set afterends
