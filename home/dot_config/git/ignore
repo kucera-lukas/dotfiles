@@ -1,0 +1,9 @@
+*.bak
+*.class
+*.gz
+*.pyc
+*.tar
+*.zip
+.idea
+.tool-versions
+/tmp
