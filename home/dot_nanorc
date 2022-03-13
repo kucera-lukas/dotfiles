@@ -1,8 +1,14 @@
 set tabsize 4
+set tabstospaces
 set mouse
 set softwrap
 set autoindent
 set smarthome
 set positionlog
+set smooth
+set linenumbers
 set showcursor
 set afterends
+set zap
+
+include ~/.nano/*.nanorc
