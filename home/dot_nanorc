@@ -5,7 +5,7 @@ set softwrap
 set autoindent
 set smarthome
 set positionlog
-set smooth
+# set smooth
 set linenumbers
 set showcursor
 set afterends
