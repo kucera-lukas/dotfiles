@@ -1,3 +1,3 @@
-function downloads --wraps='cd ~/Downloads'
-    command cd ~/Downloads $argv
+function downloads --wraps='cd $HOME/Downloads'
+    cd $HOME/Downloads $argv
 end
