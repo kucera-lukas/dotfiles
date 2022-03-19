@@ -147,11 +147,10 @@ if not set -q fish_initialized
     abbr -a -- bak backup
     abbr -a -- cp copy
     abbr -a -- ctb copy-to-clipboard
-    abbr -a -- dl downloads
     abbr -a -- ev echo-variable
     abbr -a -- lu last-used
     abbr -a -- mc mkcd
-    abbr -a -- mvl move-last-download
+    abbr -a -- ldl last-download
     abbr -a -- res restore
     abbr -a -- rm remove
 
@@ -180,6 +179,17 @@ if not set -q fish_initialized
 
     # chezmoi
     abbr -a -- cz chezmoi
+
+    # utilities
+    abbr --add -- activate '. venv/bin/activate.fish'
+    abbr --add -- cddl 'cd $HOME/Downloads'
+    abbr --add -- cdgr 'cd (git root)'
+    abbr --add -- czsc 'cd $HOME/School'
+    abbr --add -- cdcz 'cd (chezmoi source-path)'
+    abbr --add -- ip-addr 'curl api.ipify.org'
+    abbr --add -- isodate 'date +%Y-%m-%d'
+    abbr --add -- isodatetime 'date +"%Y-%m-%dT%H:%M:%S"'
+    abbr --add -- pip-purge 'pip freeze --exclude-editable | xargs pip uninstall -y'
 
     set -U fish_initialized
 end
