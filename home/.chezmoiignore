@@ -1,8 +1,0 @@
-# repo
-.github/
-.pre-commit-config.yaml
-
-# private
-.ssh/authorized_keys
-.ssh/id_rsa
-.ssh/id_rsa.pub
