@@ -20,7 +20,7 @@ if not set -q fish_initialized
     abbr --add gca git commit --verbose --all
     abbr --add gcm git commit --message
     abbr --add gco git checkout
-    abbr --add gcb git checkout --branch
+    abbr --add gcb git checkout -b
     abbr --add gcO git checkout --patch
     abbr --add gcf git commit --amend --reuse-message HEAD
     abbr --add gcF git commit --verbose --amend

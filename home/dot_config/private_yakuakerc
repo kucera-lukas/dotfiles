@@ -1,0 +1,22 @@
+[Animation]
+Frames=5
+
+[Appearance]
+HideSkinBorders=true
+Skin=Nilium
+SkinInstalledWithKns=true
+
+[Desktop Entry]
+DefaultProfile=Profile.profile
+
+[Dialogs]
+FirstRun=false
+
+[KFileDialog Settings]
+detailViewIconSize=16
+
+[Window]
+DynamicTabTitles=true
+Height=55
+ShowSystrayIcon=false
+Width=80

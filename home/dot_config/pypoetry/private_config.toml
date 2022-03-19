@@ -1,0 +1,9 @@
+[virtualenvs]
+create = true
+path = "{cache-dir}/virtualenvs"
+
+[experimental]
+new-installer = true
+
+[installer]
+parallel = true
