@@ -1,4 +1,3 @@
-function z --argument dir --description 'Jump to directory with z and list its contents'
-    echo testing
-    z $dir && exa
+function z --description 'Jump to directory with zoxide and list its contents' --wraps __zoxide_z
+    __zoxide_z $argv && exa
 end

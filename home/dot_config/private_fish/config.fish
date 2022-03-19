@@ -8,5 +8,5 @@ set -U fish_user_paths $HOME/.cargo/bin $fish_user_paths
 # asdf completions
 source ~/.asdf/asdf.fish
 
-# Better cd
-zoxide init fish | source
+# better cd
+zoxide init fish --no-aliases | source
