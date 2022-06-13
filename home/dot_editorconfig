@@ -24,9 +24,9 @@ trim_trailing_whitespace = false
 indent_size = 2
 
 # Tab indentation
-[{,GNU}{M,m}akefile]
+[GNU{M,m}akefile]
 indent_style = tab
 
 # 2 space indentation
-[*.{{j,t}s{x,},json,y{a,}ml,html}]
+[*.{js,jsx,ts,tsx,json,yml,yaml,html}]
 indent_size = 2

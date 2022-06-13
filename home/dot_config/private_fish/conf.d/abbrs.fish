@@ -165,6 +165,8 @@ if not set -q fish_initialized
     abbr -a -- slack 'flatpak run com.slack.Slack'
     abbr -a -- telegram 'flatpak run org.telegram.desktop'
     abbr -a -- zoom 'flatpak run us.zoom.Zoom'
+    abbr -a -- tuple 'flatpak run app.tuple.app'
+    abbr -a -- kolourpaint 'flatpak run org.kde.kolourpaint'
 
     # fd
     abbr -a -- find fd
@@ -179,6 +181,9 @@ if not set -q fish_initialized
 
     # chezmoi
     abbr -a -- cz chezmoi
+
+    # mypy
+    abbr -a -- mypy 'mypy --strict'
 
     # utilities
     abbr --add -- activate '. venv/bin/activate.fish'
