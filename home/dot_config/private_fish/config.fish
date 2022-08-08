@@ -13,3 +13,6 @@ source ~/.asdf/asdf.fish
 
 # better cd
 zoxide init fish --no-aliases | source
+
+# load and unload environment variables
+direnv hook fish | source

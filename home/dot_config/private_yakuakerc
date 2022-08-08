@@ -15,6 +15,10 @@ FirstRun=false
 [KFileDialog Settings]
 detailViewIconSize=16
 
+[Shortcuts]
+next-session=Alt+Right
+previous-session=Alt+Left
+
 [Window]
 DynamicTabTitles=true
 Height=55
