@@ -1,1 +1,1 @@
-authtoken: {{ (bitwarden "item" .bitwarden.ngrok_authtoken).login.password }}
+authtoken: {{ (bitwardenFields "item" .bitwarden.ngrok).authtoken.value }}
