@@ -1,14 +1,36 @@
+{{- $secrets := true -}}
+
+{{- if (env "SECRETS_OFF") -}}
+    {{- $secrets = false -}}
+{{- end -}}
+
 {{- $name := "Lukas Kucera" -}}
 {{- $email := "85391931+kucera-lukas@users.noreply.github.com" -}}
 {{- $gpg_keyid := "E3C1058BA1040AFC114A7B74B9072E7673C67AA1" -}}
 {{- $github_user := "kucera-lukas" -}}
 
+{{- if (env "ASK") }}
+{{- $secrets = promptBool "secrets" -}}
+
+{{- $name := promptString "full name" -}}
+{{- $email := promptString "personal email" -}}
+{{- $gpg_keyid := promptString "PGP key id" -}}
+{{- $github_user := promptString "github username" -}}
+
+{{- end -}}
+
+sourceDir: {{ .chezmoi.sourceDir }}
+
 data:
+  secrets: {{ $secrets }}
+
   name: {{ $name }}
   email: {{ $email }}
   gpg_keyid: {{ $gpg_keyid }}
   github_user: {{ $github_user }}
 
+{{- if $secrets }}
   bitwarden:
     ssh: 9dccedf6-0076-4e1b-93c5-ae5701120fa6
     ngrok: bb939e38-0279-4c2a-8f43-ae57012c34fe
+{{- end -}}
