@@ -23,13 +23,13 @@ The following environment variables can be set to configure Chezmoi on runtime:
 #### Installation
 
 ```shell
-SECRETS_OFF=1 wget -O - https://raw.githubusercontent.com/kucera-lukas/dotfiles/feat/install-script/install.sh | sh
+SECRETS_OFF=1 curl -L https://raw.githubusercontent.com/kucera-lukas/dotfiles/main/install.sh | sh
 ```
 
 #### Personal
 
 ```shell
-wget -O - https://raw.githubusercontent.com/kucera-lukas/dotfiles/feat/install-script/install.sh | sh
+curl -L https://raw.githubusercontent.com/kucera-lukas/dotfiles/main/install.sh | sh
 ```
 
 ## Contributing
