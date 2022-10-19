@@ -22,7 +22,7 @@ profile = black
 [*.java]
 # prettier-plugin-java
 max_line_length = 80
-indent_size = 4
+indent_size = 2
 
 # Markdown
 [*.{md,rst}]
