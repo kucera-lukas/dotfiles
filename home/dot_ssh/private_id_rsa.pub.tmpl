@@ -1,3 +1,0 @@
-{{- if .secrets }}
-    {{- (bitwardenFields "item" .bitwarden.ssh).public_key.value -}}
-{{- end -}}
