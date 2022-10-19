@@ -20,8 +20,8 @@ profile = black
 
 # Java
 [*.java]
-# google-java-format
-max_line_length = 100
+# prettier-plugin-java
+max_line_length = 80
 indent_size = 2
 
 # Markdown

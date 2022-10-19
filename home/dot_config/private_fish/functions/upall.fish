@@ -7,4 +7,7 @@ function upall --description "update everything"
 
     echo "updating flatpak..."
     flatpak update -y
+
+    echo "updating cargo executables..."
+    cargo install-update -a
 end

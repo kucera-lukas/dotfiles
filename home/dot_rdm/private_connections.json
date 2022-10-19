@@ -1,0 +1,14 @@
+[
+    {
+        "auth": "",
+        "filter_history": {
+            "*": 6
+        },
+        "host": "127.0.0.1",
+        "name": "localhost",
+        "port": 6379,
+        "timeout_connect": 60000,
+        "timeout_execute": 60000,
+        "username": ""
+    }
+]
