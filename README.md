@@ -10,6 +10,8 @@
 
 ### Instructions
 
+#### Environment variables
+
 **Note:** You are required to use the env variable `SECRETS_OFF=1`,
 as not passing will make chezmoi fail when connecting to my Bitwarden account.
 
@@ -18,22 +20,16 @@ The following environment variables can be set to configure Chezmoi on runtime:
     ASK: Set to 1 if you want to enable chezmoi prompt
     SECRETS_OFF: Set to 1 to enable Bitwarden (uses my personal secrets set in .chezmoi.yaml)
 
-For example, you can enable `ASK` by running:
+#### Installation
+
 ```shell
-ASK=1 chezmoi apply
+SECRETS_OFF=1 sh -c "$(curl -fsSL https://raw.githubusercontent.com/kucera-lukas/dotfiles/main/install.sh)"
 ```
 
-Chezmoi allows easy installation of this configuration
-by running the following command:
+#### Personal
 
 ```shell
-SECRETS_OFF=1 chezmoi init kucera-lukas
-```
-
-### Personal
-
-```shell
-chezmoi init kucera-lukas
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/kucera-lukas/dotfiles/main/install.sh)"
 ```
 
 ## Contributing
