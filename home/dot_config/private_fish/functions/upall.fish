@@ -8,6 +8,12 @@ function upall --description "update everything"
     echo "updating flatpak..."
     flatpak update -y
 
+    echo "updating asdf..."
+    asdf update
+
+    echo "updating asdf plugins..."
+    asdf plugin update --all
+
     echo "updating cargo executables..."
     cargo install-update -a
 end

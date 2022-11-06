@@ -25,3 +25,6 @@ direnv hook fish | source
 
 # flyctl
 set -x PATH $HOME/.fly/bin $PATH
+
+# pack
+source (pack completion --shell fish)
