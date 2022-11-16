@@ -14,6 +14,9 @@ function upall --description "update everything"
     echo "updating asdf plugins..."
     asdf plugin update --all
 
+    echo "updating pipx applications..."
+    pipx upgrade-all
+
     echo "updating cargo executables..."
     cargo install-update -a
 end
