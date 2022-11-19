@@ -3,3 +3,6 @@
 
 # Added by Toolbox App
 export PATH="$PATH:/home/lkms19/.local/share/JetBrains/Toolbox/scripts"
+
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
