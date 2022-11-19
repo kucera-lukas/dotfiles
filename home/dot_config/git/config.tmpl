@@ -1,38 +1,345 @@
 [user]
-	name = {{ .name }}
-	email = {{ .email }}
-	signingkey = {{ .gpg_keyid }}
+    name = {{ .name }}
+    email = {{ .email }}
+    signingkey = {{ .gpg_keyid }}
+
 [commit]
-	verbose = true
-	gpgsign = true
+    verbose = true
+    gpgsign = true
+    status = true
+
 [alias]
-    root = rev-parse --show-toplevel
-	whoami = !git config --get user.name && git config --get user.email
+    # log, current branch
+    l  = log --pretty=lc --graph
+    lo = log --pretty=lo --graph --date=human
+    ls = log --pretty=lo --graph --date=human --simplify-by-decoration
+    lf = log --pretty=lf --graph
+    ld = log --pretty=lf --graph --cc --stat
+    lp = log --pretty=lf --graph --cc --patch
+
+    # log, all branches+tags on all remotes
+    la  = log --pretty=lc --graph                                       --all
+    lao = log --pretty=lo --graph --date=human                          --all
+    las = log --pretty=lo --graph --date=human --simplify-by-decoration --all
+    laf = log --pretty=lf --graph                                       --all
+    lad = log --pretty=lf --graph --cc --stat                           --all
+    lap = log --pretty=lf --graph --cc --patch                          --all
+
+    # log, all branches+tags on remotes 'origin' and 'upstream'
+    lg  = log --pretty=lc --graph                                       --branches=* --tags=* --remotes=origin --remotes=upstream
+    lgo = log --pretty=lo --graph --date=human                          --branches=* --tags=* --remotes=origin --remotes=upstream
+    lgs = log --pretty=lo --graph --date=human --simplify-by-decoration --branches=* --tags=* --remotes=origin --remotes=upstream
+    lgf = log --pretty=lf --graph                                       --branches=* --tags=* --remotes=origin --remotes=upstream
+    lgd = log --pretty=lf --graph --cc --stat                           --branches=* --tags=* --remotes=origin --remotes=upstream
+    lgp = log --pretty=lf --graph --cc --patch                          --branches=* --tags=* --remotes=origin --remotes=upstream
+
+    # reflog
+    rl  = reflog --pretty=rlc
+    rlo = reflog --pretty=rlo
+    rlf = reflog --pretty=rlf
+    rld = reflog --pretty=rlf --stat
+
+    # stash
+    sl  = stash list --pretty=rlc
+    slo = stash list --pretty=rlo
+    slf = stash list --pretty=rlf
+    sld = stash list --pretty=rlf --stat
+    slp = stash list --pretty=rlf --patch
+    sls = stash show --patch
+
+    # inspection
+    sh = show --stat --cc --summary --patch
+    grep = grep -Ii
+    desc = describe --abbrev=0
+    descl = describe --long
+
+    # diff
+    d = diff -c
+    ds = diff --find-renames --stat --cc -c
+    dc = diff --cached -c
+    dl = diff --cached -c HEAD~
+    du = diff --cached -c @{u}
+
+    # status
+    st = status
+    sti = status --ignored
+    sta = status --ignored --untracked-files
+    stb = status -sb
+
+    # show
+    s = show
+    sh = show HEAD
+
+    # index
+    a = add
+    aa = add --all
+    au = add --update
+    ai = add --interactive
+    ap = add --patch
+    an = add --intent-to-add
+    u = reset HEAD --
+    up = reset --patch HEAD --
+
+    # commit
+    c = commit
+    cn = commit --no-verify
+    cc = commit -c
+    cf = commit --fixup
+    cs = commit --squash
+    ca = commit --amend
+    can = commit --amend --no-edit
+
+    # switch
+    sw = switch
+    swc = switch --create
+    swfc = switch --force-create
+    swd = switch --detach
+
+    # restore
+    rs = restore
+    rss = restore --staged
+    rsrc = restore --source
+
+    # checkout
+    co = checkout
+    cob = checkout -b
+    cop = checkout --patch HEAD --
+
+    # branch
+    b = branch
+    bc = branch --contains
+    bd = branch --delete --force
+    bl = branch -vv
+    bla = branch --all -vv
+
+    # tag
+    t = tag
+    tc = tag --contains
+    td = tag --delete
+
+    # network (in)
+    cl = clone
+    p = pull
+    f = fetch --tags
+    ff = fetch --force --prune --tags
+    fa = fetch --all --tags
+    ffa = fetch --all --force --prune --tags
+
+    # network (out)
+    pu = push
+    puf = push --force-with-lease
+    puff = push --force
+    pun = push --no-verify
+    punf = push --no-verify --force-with-lease
+    punff = push --no-verify --force
+
+    # submodule
+    sub = submodule
+    subu = submodule update --init --recursive
+
+    # rebase
+    r = rebase
+    ra = rebase --abort
+    rc = rebase --continue
+    rq = rebase --quit
+    rs = rebase --skip
+    ret = rebase --edit-todo
+    rsh = rebase --show-current-patch
+
+    # interactive rebase
+    ri = rebase --interactive
+    rin = rebase --interactive --no-autosquash
+    riu = rebase --interactive @{u}
+
+    # cherry-pick
+    cp = cherry-pick
+    cpa = cherry-pick --abort
+    cpc = cherry-pick --continue
+    cpq = cherry-pick --quit
+
+    # revert
+    rv = revert
+    rva = revert --abort
+    rvc = revert --continue
+    rvq = revert --quit
+
+    # reset
+    re = reset
+    res = reset --soft
+    reh = reset --hard
+
+    # w-commands
+    which = branch --all --contains
+    which-tag = describe --always --contains
+    who = shortlog --summary --numbered --no-merges
+    whoami = !git config --get user.name && git config --get user.email
+
+    # utils
+    authors = !sh -c 'git log --format="%aN" | sort -k 2 -u'
+    changed = diff ORIG_HEAD..
+    deleted = log --diff-filter=D --summary
+    edits = diff --color-words
+    hide = update-index --assume-unchanged
+    info = config --list
+    nuke = !sh -c 'git reset --hard HEAD~$1' -
+    showtag = !sh -c 'git rev-parse $1 | xargs git cat-file -p' -
+    staged = diff --cached
+    stashed = !git --no-pager stash list
+    tags = tag -n1 -l
+    trash = !git reset HEAD . && git checkout -- . && echo 'Undid all changes'
+    type = cat-file -t
+    unstage = reset HEAD .
+    root = rev-parse --show-toplevel.
+    git = "!git"
+
 [color]
-    ui = auto
-    diff = auto
-    status = auto
-    log = auto
-    grep = auto
-    interactive = auto
+    advice = true
+    branch = true
+    diff = true
+    grep = true
+    interactive = true
     pager = true
+    push = true
+    remote = true
+    showBranch = true
+    status = true
+    transport = true
+    ui = true
+
 [core]
+    editor = nano
     excludesfile = ~/.config/git/ignore
-    pager = less
+    pager = delta
+    commitGraph = true
+
 [init]
     defaultBranch = "main"
     templateDir = ~/.config/git/
+
+[interactive]
+    singlekey = true
+    diffFilter = delta --color-only
+
 [log]
-    decorate = full
+    abbrevCommit = true
+    decorate = short
+    date = format:%a, %Y-%m-%d %R (%z)
+    follow = true
+    graphColors = 1,2,3,4,5,6,8,166,9,10,11,12,13,14,15,208
+    showRoot = true
+    mailmap = true
+
+[pretty]
+    lo  = tformat:%C(auto)%h%C(reset)%C(auto)%d%C(reset) %s %C(italic blue)%ad%C(reset) %C(241)%aN%C(reset)
+    lc  =  format:%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n
+    lt  =  format:%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n%w(0,7,7)%+(trailers:only,unfold)
+    lf  =  format:%C(auto)%h%C(reset)%C(auto)%d%C(reset)   %C(italic 239)[P: %p] [T: %t]%C(reset)%n%C(white)Author:%C(reset)   %aN %C(241)<%aE>%C(reset)%n          %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%n%C(white)Commit:%C(reset)   %cN %C(241)<%cE>%C(reset)   %C(italic 239)[GPG: %G?% GK]%C(reset)%n          %C(italic blue)%cd%C(reset) %C(italic cyan)(%cr)%C(reset)%w(0,4,4)%n%n%C(bold)%s%C(reset)%n%n%-b%n%n%-N%n
+    rlo = tformat:%C(auto)%h%C(reset) %C(bold yellow)(%C(magenta)%gd%C(bold yellow))%C(reset)%C(auto)%d%C(reset) %gs %C(italic blue)%ad%C(reset) %C(241)%aN%C(reset)
+    rlc =  format:%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n %C(white)⤷%C(reset) %C(bold yellow)(%C(magenta)%gd%C(bold yellow))%C(reset) %gs %C(241)- %gN <%gE>%C(reset)%n
+    rlt =  format:%C(auto)%h%C(reset) %C(white)-%C(reset) %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n %C(white)⤷%C(reset) %s %C(241)- %aN <%aE>%C(reset)%n %C(white)⤷%C(reset) %C(bold yellow)(%C(magenta)%gd%C(bold yellow))%C(reset) %gs %C(241)- %gN <%gE>%C(reset)%n%w(0,7,7)%+(trailers:only,unfold)
+    rlf =  format:%C(auto)%h%C(reset) %C(bold yellow)(%C(magenta)%gd%C(bold yellow))%C(reset)%C(auto)%d%C(reset)   %C(italic 239)[P: %p] [T: %t]%C(reset)%n%C(white)Author:%C(reset)   %aN %C(241)<%aE>%C(reset)%n          %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%n%C(white)Commit:%C(reset)   %cN %C(241)<%cE>%C(reset)   %C(italic 239)[GPG: %G?% GK]%C(reset)%n          %C(italic blue)%cd%C(reset) %C(italic cyan)(%cr)%C(reset)%n%C(white)Reflog:%C(reset)   %gN %C(241)<%gE>%C(reset)%n          %C(italic)%gs%C(reset)%w(0,4,4)%n%n%C(bold)%s%C(reset)%n%n%-b%n%n%-N%n
+
+
+[push]
+    default = current
+    followTags = true
+
 [pull]
     ff = only
-    rebase = true
+    rebase = interactive
+
 [rebase]
+    abbreviateCommands = false
+    missingCommitsCheck = warn
     autosquash = true
     autostash = true
+    stat = true
+
+[branch]
+    autoSetupMerge = true
+    autosetuprebase = always
+
+[rerere]
+    enabled = true
+
+[merge]
+    conflictstyle = diff3
+    ff = only
+    autostash = true
+
+[fetch]
+    prune = true
+
+[stash]
+    showPatch = true
+
+[status]
+    showStash = true
+    showUntrackedFiles = all
+    renames = copies
+
+[diff]
+    colorMoved = true
+    renames = copies
+    mnemonicprefix = true
+
+[diff "json"]
+    textconv = jq '.'
+
+[diff "hex"]
+    textconv = hexdump -v -C
+    binary = true
+
+[diff "zip"]
+    textconv = unzip -v
+
+[diff "bin"]
+    textconv = hexdump -v -C
+
+[grep]
+    extendRegexp = true
+    lineNumber = true
+    fallbackToNoIndex = true
+
+[remote "origin"]
+    prune = true
+
 [github]
     user = {{ .github_user }}
+
+[url "git@github.com:"]
+    insteadOf = @gh:
+
+[url "git@gitlab.com:"]
+    insteadOf = @gl:
+
+[url "git@bitbucket.org:"]
+    insteadOf = @bb:
+
+[url "aur@aur.archlinux.org"]
+    insteadOf = @aur:
+
+[url "https://github.com/"]
+    insteadOf = gh://
+
+[url "https://gitlab.com/"]
+    insteadOf = gl://
+
+[url "https://bitbucket.org/"]
+    insteadOf = bb://
+
+[url "https://aur.archlinux.org/"]
+    insteadOf = aur://
+
 [url "git@github.com:{{ .github_user }}/"]
-	insteadOf = https://github.com/{{ .github_user }}/
+    insteadOf = https://github.com/{{ .github_user }}/
+
 [blame]
     ignoreRevsFile = .git-blame-ignore-revs
+
+[flake8]
+    strict = true
+
+[delta]
+    line-numbers = true
+    navigate = true
