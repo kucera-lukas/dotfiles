@@ -28,3 +28,6 @@ set -x PATH $HOME/.fly/bin $PATH
 
 # pack
 source (pack completion --shell fish)
+
+# broot
+source $HOME/.config/broot/launcher/bash/br
