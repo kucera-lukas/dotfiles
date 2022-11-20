@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# {{ .chezmoi.version.commit }}
-
-{{ index .chezmoi.args 0 }} completion fish > {{ joinPath .chezmoi.homeDir ".config" "fish" "completions" "chezmoi.fish" }}
