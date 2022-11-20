@@ -19,7 +19,11 @@
 
 {{- end -}}
 
+verbose: true
 sourceDir: {{ .chezmoi.sourceDir }}
+
+cd:
+  command: fish
 
 data:
   secrets: {{ $secrets }}
