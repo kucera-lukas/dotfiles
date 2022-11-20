@@ -19,19 +19,44 @@
 
 {{- end -}}
 
+progress: true
 verbose: true
 sourceDir: {{ .chezmoi.sourceDir }}
 
 cd:
   command: fish
 
+edit:
+  apply: true
+  command: nano
+
+textconv:
+  - pattern: '**/*.json'
+    command: jq
+    args:
+      - '.'
+  - pattern: '**/*.hex'
+    command: hexdump
+    args:
+      - -v
+      - -C
+  - pattern: '**/*.zip'
+    command: unzip
+    args:
+      - -v
+  - pattern: '**/*.bin'
+    command: hexdump
+    args:
+      - -v
+      - -C
+
 data:
   secrets: {{ $secrets }}
 
-  name: {{ $name }}
-  email: {{ $email }}
-  gpg_keyid: {{ $gpg_keyid }}
-  github_user: {{ $github_user }}
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
+  gpg_keyid: {{ $gpg_keyid | quote }}
+  github_user: {{ $github_user | quote }}
 
 {{- if $secrets }}
   bitwarden:
