@@ -181,16 +181,17 @@
     edits = diff --color-words
     hide = update-index --assume-unchanged
     info = config --list
-    nuke = !sh -c 'git reset --hard HEAD~$1' -
-    showtag = !sh -c 'git rev-parse $1 | xargs git cat-file -p' -
+    object = !sh -c 'git rev-parse $1 | xargs git cat-file -p' -
     staged = diff --cached
     stashed = !git --no-pager stash list
     tags = tag -n1 -l
-    trash = !git reset HEAD . && git checkout -- . && echo 'Undid all changes'
+    trash = !git restore --staged --worktree --source HEAD -- . && echo 'Trashed all changes'
+    nuke = !git reset --hard HEAD~1 && echo 'Nuked last commit'
+    restart = !git reset --hard @{upstream} && echo 'Restarted to upstream branch'
     type = cat-file -t
     unstage = reset HEAD .
-    root = rev-parse --show-toplevel.
-    git = "!git"
+    root = rev-parse --show-toplevel
+    git = !git
 
 [color]
     advice = true
