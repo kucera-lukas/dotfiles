@@ -1,5 +1,0 @@
-{{- if .secrets -}}
-#!/bin/sh
-
-ssh-keygen -y -f {{ joinPath .chezmoi.homeDir ".ssh" "id_rsa" }} > {{ joinPath .chezmoi.homeDir ".ssh" "id_rsa.pub" }}
-{{- end -}}
