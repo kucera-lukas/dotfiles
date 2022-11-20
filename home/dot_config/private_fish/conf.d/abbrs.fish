@@ -5,6 +5,31 @@ if not set -q fish_initialized
     abbr -a -- mv 'mv -i'
     abbr -a -- tree 'tree -dirsfirst -F'
 
+    ## modern unix
+
+    # bat
+    abbr -a -- cat 'bat --plain --paging=never'
+
+    # fd
+    abbr -a -- find fd
+
+    # zoxide
+    abbr -a -- cd z
+
+    # exa
+    abbr -a -- ls exa
+    abbr -a -- ll 'exa --long --all --group --git'
+    abbr -a -- lt 'exa --long --all --group --header --tree --level'
+
+    # dust
+    abbr --add du dust
+
+    # duf
+    abbr --add df duf
+
+    # procs
+    abbr --add ps procs
+
     ## Git
 
     # Branch (b)
@@ -154,9 +179,6 @@ if not set -q fish_initialized
     abbr -a -- res restore
     abbr -a -- rm remove
 
-    # bat
-    abbr -a -- cat 'bat --plain'
-
     # flatpak
     abbr -a -- bitwarden 'flatpak run com.bitwarden.desktop'
     abbr -a -- discord 'flatpak run com.discordapp.Discord'
@@ -167,17 +189,6 @@ if not set -q fish_initialized
     abbr -a -- zoom 'flatpak run us.zoom.Zoom'
     abbr -a -- tuple 'flatpak run app.tuple.app'
     abbr -a -- kolourpaint 'flatpak run org.kde.kolourpaint'
-
-    # fd
-    abbr -a -- find fd
-
-    # zoxide
-    abbr -a -- cd z
-
-    # exa
-    abbr -a -- ls exa
-    abbr -a -- ll 'exa --long --all --group --git'
-    abbr -a -- lt 'exa --long --all --group --header --tree --level'
 
     # chezmoi
     abbr -a -- cz chezmoi
