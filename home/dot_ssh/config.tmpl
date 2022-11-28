@@ -8,7 +8,7 @@ Host *
     IdentityFile ~/.ssh/id_rsa
 {{- end }}
     ControlMaster auto
-    ControlPath ~/.ssh/controlmasters/%r@%h:%p
+    ControlPath ~/.ssh/controlmasters/%C
     ControlPersist 20m
 
 Host github
