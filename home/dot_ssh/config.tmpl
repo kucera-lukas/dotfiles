@@ -1,0 +1,24 @@
+Include config.d/*
+
+Host *
+    User {{ output "whoami" }}
+    VisualHostKey yes
+    PasswordAuthentication no
+{{- if .secrets }}
+    IdentityFile ~/.ssh/id_rsa
+{{- end }}
+    ControlMaster auto
+    ControlPath ~/.ssh/controlmasters/%r@%h:%p
+    ControlPersist 20m
+
+Host github
+    HostName github.com
+    User {{ .github_user }}
+{{- if .secrets }}
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+{{- end }}
+
+Host localhost
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
