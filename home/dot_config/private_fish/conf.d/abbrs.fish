@@ -190,6 +190,9 @@ if not set -q fish_initialized
     abbr -a -- tuple 'flatpak run app.tuple.app'
     abbr -a -- kolourpaint 'flatpak run org.kde.kolourpaint'
 
+    # terraform
+    abbr -a -- tf terraform
+
     # chezmoi
     abbr -a -- cz chezmoi
 

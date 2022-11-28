@@ -26,8 +26,5 @@ direnv hook fish | source
 # flyctl
 set -x PATH $HOME/.fly/bin $PATH
 
-# terraform
-complete -C /usr/bin/terraform terraform
-
 # pack
 source (pack completion --shell fish)
