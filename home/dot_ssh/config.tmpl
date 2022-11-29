@@ -1,24 +1,35 @@
 Include config.d/*
 
-Host *
-    User {{ output "whoami" }}
-    VisualHostKey yes
-    PasswordAuthentication no
-{{- if .secrets }}
-    IdentityFile ~/.ssh/id_rsa
-{{- end }}
-    ControlMaster auto
-    ControlPath ~/.ssh/controlmasters/%C
-    ControlPersist 20m
+CanonicalDomains lukaskucera.com
+CanonicalizeHostname yes
 
 Host github
     HostName github.com
-    User {{ .github_user }}
+    User git
 {{- if .secrets }}
     IdentityFile ~/.ssh/id_rsa
-    IdentitiesOnly yes
 {{- end }}
+    PubkeyAuthentication yes
 
 Host localhost
     UserKnownHostsFile /dev/null
     StrictHostKeyChecking no
+
+Host *
+    User {{ output "whoami" }}
+    ForwardAgent no
+    ForwardX11 no
+
+    PasswordAuthentication no
+
+    PermitLocalCommand no
+
+    PubkeyAuthentication no
+
+    IdentitiesOnly yes
+
+    VisualHostKey no
+
+    ControlMaster auto
+    ControlPath ~/.ssh/controlmasters/%C
+    ControlPersist 20m
