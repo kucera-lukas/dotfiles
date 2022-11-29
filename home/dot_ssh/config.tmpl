@@ -1,0 +1,37 @@
+Include config.d/*
+
+CanonicalDomains lukaskucera.com
+CanonicalizeHostname yes
+
+Host github
+    HostName github.com
+    User git
+{{- if .secrets }}
+    IdentityFile ~/.ssh/id_rsa
+{{- end }}
+    PubkeyAuthentication yes
+
+Host localhost
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+
+Host *
+    User {{ output "whoami" }}
+    ForwardAgent no
+    ForwardX11 no
+
+    PasswordAuthentication no
+
+    PermitLocalCommand no
+
+    PubkeyAuthentication no
+
+    IdentitiesOnly yes
+
+    VisualHostKey no
+
+    LogLevel INFO
+
+    ControlMaster auto
+    ControlPath ~/.ssh/controlmasters/%C
+    ControlPersist 20m
