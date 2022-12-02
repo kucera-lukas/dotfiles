@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# inspired by https://github.com/benmezger/dotfiles/blob/main/dot_ipython/profile_default/startup/start.py
 from __future__ import annotations
 
 import json

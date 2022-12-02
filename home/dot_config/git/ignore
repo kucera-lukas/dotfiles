@@ -1,5 +1,7 @@
 *.bak
 *.class
+*.direnv
+*.egg-info
 *.pyc
 *.tar
 *.com
