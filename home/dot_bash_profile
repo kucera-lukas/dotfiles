@@ -1,10 +1,11 @@
 # .bash_profile
 
+# Get the environment, PATH and friends
+if [ -f ~/.profile ]; then
+   . ~/.profile
+fi
+
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
-
-# User specific environment and startup programs
-
-. "$HOME/.cargo/env"
