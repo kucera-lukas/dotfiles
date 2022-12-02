@@ -1,5 +1,8 @@
 # .profile
 
+# python
+export PYTHONSTARTUP="$HOME/.python/interactive_startup.py"
+
 # cargo
 . "$HOME/.cargo/env"
 
