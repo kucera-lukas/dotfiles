@@ -192,6 +192,8 @@
     unstage = reset HEAD .
     root = rev-parse --show-toplevel
     git = !git
+    # inspired by https://stackoverflow.com/a/53597426
+    amend-to = "!f() { current_branch=\"$(git rev-parse --abbrev-ref HEAD)\" && apply_to=\"$1\" && git stash --quiet && git checkout --quiet \"$apply_to\" && git stash apply --quiet && git add -u && git commit --quiet --amend --no-edit && new_sha=\"$(git log --format=\"%H\" -n 1)\" && git switch --quiet \"$current_branch\" && git rebase --quiet --onto \"$new_sha\" \"$apply_to\" && echo \"Amended changes to $apply_to\"; }; f $1"
 
 [color]
     advice = true
