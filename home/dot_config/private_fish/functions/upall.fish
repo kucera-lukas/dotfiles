@@ -17,6 +17,9 @@ function upall --description "update everything"
     echo "updating pipx applications..."
     pipx upgrade-all
 
+    echo "updating rust toolchains and rustup..."
+    rustup update
+
     echo "updating cargo executables..."
     cargo install-update -a
 end

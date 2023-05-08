@@ -9,3 +9,6 @@ fi
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
+
+# Created by `pipx` on 2023-02-11 22:15:36
+export PATH="$PATH:/home/lkucera/.local/bin"
