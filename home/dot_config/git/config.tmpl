@@ -212,7 +212,7 @@
 [core]
     editor = nano
     excludesfile = ~/.config/git/ignore
-    pager = delta
+    pager = delta --features="$(case $(echo $(gsettings get org.gnome.desktop.interface gtk-theme) | tr '[:upper:]' '[:lower:]') in *dark*) echo dark-mode ;; *) echo light-mode ;; esac)"
     commitGraph = true
 
 [init]
@@ -221,7 +221,7 @@
 
 [interactive]
     singlekey = true
-    diffFilter = delta --color-only
+    diffFilter = delta --color-only --features="interactive $(case $(echo $(gsettings get org.gnome.desktop.interface gtk-theme) | tr '[:upper:]' '[:lower:]')" in *dark*) echo dark-mode ;; *) echo light-mode ;; esac)"
 
 [log]
     abbrevCommit = true
@@ -282,7 +282,7 @@
     renames = copies
 
 [diff]
-    colorMoved = true
+    colorMoved = default
     renames = copies
     mnemonicprefix = true
 
@@ -344,5 +344,19 @@
     strict = true
 
 [delta]
+    features = decorations
+    hyperlinks = true
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
     line-numbers = true
     navigate = true
+    side-by-side = true
+    true-color = always
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "light-mode"]
+    light = true
+
+[delta "dark-mode"]
+    dark = true
