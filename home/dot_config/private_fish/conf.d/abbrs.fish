@@ -54,6 +54,7 @@ if not set -q fish_initialized
     abbr --add -- isodate 'date +%Y-%m-%d'
     abbr --add -- isodatetime 'date +"%Y-%m-%dT%H:%M:%S"'
     abbr --add -- pip-purge 'pip freeze --exclude-editable | xargs pip uninstall -y'
+    abbr --add -- unset 'set --erase'
 
     set -U fish_initialized
 end
