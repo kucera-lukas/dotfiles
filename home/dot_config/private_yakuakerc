@@ -3,11 +3,11 @@ Frames=5
 
 [Appearance]
 HideSkinBorders=true
-Skin=Nilium
+Skin=breeze_v2
 SkinInstalledWithKns=true
 
 [Desktop Entry]
-DefaultProfile=Profile.profile
+DefaultProfile=light.profile
 
 [Dialogs]
 FirstRun=false
@@ -16,8 +16,10 @@ FirstRun=false
 detailViewIconSize=16
 
 [Shortcuts]
-next-session=Alt+Right
-previous-session=Alt+Left
+next-session=Ctrl+Tab
+next-terminal=Alt+Right
+previous-session=Ctrl+Shift+Tab
+previous-terminal=Alt+Left
 
 [Window]
 DynamicTabTitles=true
