@@ -26,6 +26,7 @@
 .tool-versions
 .cache
 .coverage
+.vscode
 venv*
 htmlcov
 coverage.xml
