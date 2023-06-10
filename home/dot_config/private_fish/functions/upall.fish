@@ -22,4 +22,7 @@ function upall --description "update everything"
 
     echo "updating cargo executables..."
     cargo install-update -a
+
+    echo "updating tldr cache"
+    tldr --update
 end
