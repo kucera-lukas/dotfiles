@@ -299,6 +299,9 @@
 [diff "bin"]
     textconv = hexdump -v -C
 
+[diff "gpg"]
+    textconv = gpg -d --quiet --yes --compress-algo=none --no-encrypt-to
+
 [grep]
     extendRegexp = true
     lineNumber = true
