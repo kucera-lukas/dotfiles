@@ -56,28 +56,33 @@
     "command": "-workbench.action.focusRightGroup"
   },
   {
-    "key": "ctrl+c ctrl+t",
+    "key": "ctrl+k t",
     "command": "editor.action.transformToTitlecase"
   },
   {
-    "key": "ctrl+c ctrl+l",
+    "key": "ctrl+k l",
     "command": "editor.action.transformToLowercase"
   },
   {
-    "key": "ctrl+c ctrl+u",
+    "key": "ctrl+k u",
     "command": "editor.action.transformToUppercase"
   },
   {
-    "key": "ctrl+c ctrl+s",
+    "key": "ctrl+k s",
     "command": "editor.action.transformToSnakecase"
   },
   {
-    "key": "ctrl+c ctrl+k",
+    "key": "ctrl+k k",
     "command": "editor.action.transformToKebabcase"
   },
   {
-    "key": "ctrl+c ctrl+c",
+    "key": "ctrl+k c",
     "command": "editor.action.transformToCamelcase"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "workbench.action.terminal.selectAll",
+    "when": "terminalFocus"
   },
   {
     "key": "ctrl+shift+alt+meta+enter",
