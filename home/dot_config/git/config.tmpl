@@ -212,7 +212,7 @@
 [core]
     editor = nano
     excludesfile = ~/.config/git/ignore
-    pager = delta --features="$(case $(echo $(gsettings get org.gnome.desktop.interface gtk-theme) | tr '[:upper:]' '[:lower:]') in *dark*) echo dark-mode ;; *) echo light-mode ;; esac)"
+    pager = delta
     commitGraph = true
 
 [init]
@@ -221,7 +221,7 @@
 
 [interactive]
     singlekey = true
-    diffFilter = delta --color-only --features="interactive $(case $(echo $(gsettings get org.gnome.desktop.interface gtk-theme) | tr '[:upper:]' '[:lower:]')" in *dark*) echo dark-mode ;; *) echo light-mode ;; esac)"
+    diffFilter = delta --color-only
 
 [log]
     abbrevCommit = true
@@ -354,12 +354,3 @@
     navigate = true
     side-by-side = true
     true-color = always
-
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
-[delta "light-mode"]
-    light = true
-
-[delta "dark-mode"]
-    dark = true
