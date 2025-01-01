@@ -185,15 +185,18 @@
     staged = diff --cached
     stashed = !git --no-pager stash list
     tags = tag -n1 -l
-    trash = !git restore --staged --worktree --source HEAD -- . && echo 'Trashed all changes'
-    nuke = !git reset --hard HEAD~1 && echo 'Nuked last commit'
-    restart = !git reset --hard @{upstream} && echo 'Restarted to upstream branch'
+    trash = !git restore --staged --worktree --source HEAD -- .
+    nuke = !git reset --hard HEAD~1
+    restart = !git reset --hard @{upstream}
     type = cat-file -t
     unstage = reset HEAD .
     root = rev-parse --show-toplevel
     git = !git
     # inspired by https://stackoverflow.com/a/53597426
-    amend-to = "!f() { current_branch=\"$(git rev-parse --abbrev-ref HEAD)\" && apply_to=\"$1\" && git stash --quiet && git checkout --quiet \"$apply_to\" && git stash apply --quiet && git add -u && git commit --quiet --amend --no-edit && new_sha=\"$(git log --format=\"%H\" -n 1)\" && git switch --quiet \"$current_branch\" && git rebase --quiet --onto \"$new_sha\" \"$apply_to\" && echo \"Amended changes to $apply_to\"; }; f $1"
+    amend-to = "!f() { current_branch=\"$(git rev-parse --abbrev-ref HEAD)\" && apply_to=\"$1\" && git stash --quiet && git checkout --quiet \"$apply_to\" && git stash apply --quiet && git add -u && git commit --quiet --amend --no-edit && new_sha=\"$(git log --format=\"%H\" -n 1)\" && git switch --quiet \"$current_branch\" && git rebase --quiet --onto \"$new_sha\" \"$apply_to\"; }; f $1"
+    # inspired by https://stackoverflow.com/questions/28666357/how-to-get-default-git-branch#comment126528129_50056710
+    origin = "!sh -c \"git switch $(LC_ALL=C git remote show origin | sed -n '/HEAD branch/s/.*: //p')\""
+    github = !sh -c 'ssh -T git@github.com'
 
 [color]
     advice = true
@@ -280,6 +283,10 @@
     showStash = true
     showUntrackedFiles = all
     renames = copies
+
+[advice]
+    addEmptyPathspec = false
+    detachedHead = false
 
 [diff]
     colorMoved = default
